@@ -17,13 +17,27 @@ class UniqueCollectionTest {
     @Test
     fun addAnItem() {
 
+        val testItem = Item("test1")
+
+        // Add the item to collection
+        collection.addItem(testItem)
+
+        assert(collection.size() == 1) { "Collection size should be 1" }
+        assert(collection.get(0).name == "test1") { "Item name should match" }
     }
 
     // TODO 2: Write a test to ensure that only unique items can be added to the collection
     // Uniqueness is determined by the Item.name property, which is set via the constructor
     @Test
     fun addUniqueItem() {
+        val item1 = Item("random")
+        val item2 = Item("random")
 
+        collection.addItem(item1)
+        collection.addItem(item2)
+
+        assert(collection.size() == 1) { "Collection should not accept duplicate items" }
+        assert(collection.get(0).name == "random") { "Item name should match" }
     }
 
     // Test Driven Development (TDD) test - complete specified function so that this test passes
